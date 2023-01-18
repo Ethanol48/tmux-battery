@@ -15,14 +15,14 @@ icon_charge_tier2=''
 icon_charge_tier1=''
 
 # script default variables
-icon_charge_tier8_default='█'
-icon_charge_tier7_default='▇'
-icon_charge_tier6_default='▆'
-icon_charge_tier5_default='▅'
-icon_charge_tier4_default='▄'
-icon_charge_tier3_default='▃'
-icon_charge_tier2_default='▂'
-icon_charge_tier1_default='▁'
+icon_charge_tier8_default=''
+icon_charge_tier7_default=''
+icon_charge_tier6_default=''
+icon_charge_tier5_default=''
+icon_charge_tier4_default=''
+icon_charge_tier3_default=''
+icon_charge_tier2_default=''
+icon_charge_tier1_default=''
 
 # icons are set as script global variables
 get_icon_charge_settings() {

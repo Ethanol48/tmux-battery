@@ -48,3 +48,4 @@ main() {
 	print_battery_status_fg
 }
 main
+

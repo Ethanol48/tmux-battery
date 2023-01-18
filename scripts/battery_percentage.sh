@@ -6,7 +6,7 @@ source "$CURRENT_DIR/helpers.sh"
 
 print_battery_percentage() {
 	# percentage displayed in the 2nd field of the 2nd row
-	if is_wsl; then
+	if command_exists "is_wsl"; then
 		local battery
 		battery=$(find /sys/class/power_supply/*/capacity | tail -n1)
 		cat "$battery"

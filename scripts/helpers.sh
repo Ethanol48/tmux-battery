@@ -22,22 +22,13 @@ is_chrome() {
 	fi
 }
 
-is_wsl() {
-	version=$(</proc/version)
-	if [[ "$version" == *"Microsoft"* || "$version" == *"microsoft"* ]]; then
-		return 0
-	else
-		return 1
-	fi
-}
-
 command_exists() {
 	local command="$1"
 	type "$command" >/dev/null 2>&1
 }
 
 battery_status() {
-	if is_wsl; then
+	if command_exists "is_wsl"; then
 		local battery
 		battery=$(find /sys/class/power_supply/*/status | tail -n1)
 		awk '{print tolower($0);}' "$battery"
