@@ -24,24 +24,34 @@ icon_charge_tier3=''
 icon_charge_tier2=''
 icon_charge_tier1=''
 
-# script default variables
-icon_charge_tier8_default=''
-icon_charge_tier7_default=''
-icon_charge_tier6_default=''
-icon_charge_tier5_default=''
-icon_charge_tier4_default=''
-icon_charge_tier3_default=''
-icon_charge_tier2_default=''
-icon_charge_tier1_default=''
 
-icon_charge_tier8_charging=''
-icon_charge_tier7_charging=''
-icon_charge_tier6_charging=''
-icon_charge_tier5_charging=''
-icon_charge_tier4_charging=''
-icon_charge_tier3_charging=''
-icon_charge_tier2_charging=''
-icon_charge_tier1_charging=''
+icon_charge_tier10_default='󰁹'
+icon_charge_tier9_default='󰂂'
+icon_charge_tier8_default='󰂂'
+icon_charge_tier7_default='󰂁'
+icon_charge_tier6_default='󰁿'
+icon_charge_tier5_default='󰁾'
+icon_charge_tier4_default='󰁽'
+icon_charge_tier3_default='󰁼'
+icon_charge_tier2_default='󰁻'
+icon_charge_tier1_default='󰁺'
+icon_charge_tier0_default='󰂎'
+
+
+# charging icons 
+icon_charge_tier10_charging='󰂅'
+icon_charge_tier9_charging='󰂋'
+icon_charge_tier8_charging='󰂊'
+icon_charge_tier7_charging='󰢞'
+icon_charge_tier6_charging='󰂉'
+icon_charge_tier5_charging='󰢝'
+icon_charge_tier4_charging='󰂈'
+icon_charge_tier3_charging='󰂇'
+icon_charge_tier2_charging='󰂆'
+icon_charge_tier1_charging='󰢜'
+icon_charge_tier0_charging='󰢟'
+
+
 
 
 
@@ -63,59 +73,76 @@ print_icon_charge_plus_status() {
     status=$(battery_status | awk '{print $1;}')
     if [ $status == 'charging' ]; then
         
-        if [ $percentage -ge 95 -o "$percentage" == "" ]; then
+        if [ $percentage -ge 100 -o "$percentage" == "" ]; then
 		    # if percentage is empty, assume it's a desktop         # maximum
-		    printf "$icon_charge_tier8_charging"
+		    printf "$icon_charge_tier10_charging"
+        
+        elif [ $percentage -ge 90 ]; then
+		    printf "$icon_charge_tier9_charging"
 	
         elif [ $percentage -ge 80 ]; then
-		    printf "$icon_charge_tier7_charging"
+		    printf "$icon_charge_tier8_charging"
 
-	    elif [ $percentage -ge 65 ]; then
+	      elif [ $percentage -ge 70 ]; then
+		    printf "$icon_charge_tier7_charging"
+	    
+        elif [ $percentage -ge 60 ]; then
 		    printf "$icon_charge_tier6_charging"
 	
         elif [ $percentage -ge 50 ]; then
 	    	printf "$icon_charge_tier5_charging"
+        
+        elif [ $percentage -ge 40 ]; then
+	    	printf "$icon_charge_tier4_charging"
 	
-        elif [ $percentage -ge 35 ]; then
-    		printf "$icon_charge_tier4_charging"
+        elif [ $percentage -ge 30 ]; then
+    		printf "$icon_charge_tier3_charging"
 
         elif [ $percentage -ge 20 ]; then
-    		printf "$icon_charge_tier3_charging"
-	
-        elif [ $percentage -gt 5 ]; then 
     		printf "$icon_charge_tier2_charging"
 	
+        elif [ $percentage -gt 10 ]; then 
+    		printf "$icon_charge_tier1_charging"
+	
         else
-    		printf "$icon_charge_tier1_charging"                             # minimun
+    		printf "$icon_charge_tier0_charging"                             # minimun
     	fi
   
     else
 
-        if [ $percentage -ge 95 -o "$percentage" == "" ]; then
-            # if percentage is empty, assume it's a desktop         # maximum
-            printf "$icon_charge_tier8"
-
+        if [ $percentage -ge 100 -o "$percentage" == "" ]; then
+		    # if percentage is empty, assume it's a desktop         # maximum
+		    printf "$icon_charge_tier10"
+        
+        elif [ $percentage -ge 90 ]; then
+		    printf "$icon_charge_tier9"
+	
         elif [ $percentage -ge 80 ]; then
-            printf "$icon_charge_tier7"
+		    printf "$icon_charge_tier8"
 
-        elif [ $percentage -ge 65 ]; then
-            printf "$icon_charge_tier6"
-
+	      elif [ $percentage -ge 70 ]; then
+		    printf "$icon_charge_tier7"
+	    
+        elif [ $percentage -ge 60 ]; then
+		    printf "$icon_charge_tier6"
+	
         elif [ $percentage -ge 50 ]; then
-            printf "$icon_charge_tier5"
-
-        elif [ $percentage -ge 35 ]; then
-            printf "$icon_charge_tier4"
+	    	printf "$icon_charge_tier5"
+        
+        elif [ $percentage -ge 40 ]; then
+	    	printf "$icon_charge_tier4"
+	
+        elif [ $percentage -ge 30 ]; then
+    		printf "$icon_charge_tier3"
 
         elif [ $percentage -ge 20 ]; then
-            printf "$icon_charge_tier3"
-
-        elif [ $percentage -gt 5 ]; then 
-            printf "$icon_charge_tier2"
-
+    		printf "$icon_charge_tier2"
+	
+        elif [ $percentage -gt 10 ]; then 
+    		printf "$icon_charge_tier1"
+	
         else
-            printf "$icon_charge_tier1"                             # minimun
-        fi
+    		printf "$icon_charge_tier0"                             # minimun
     fi
 }
 
