@@ -4,25 +4,6 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 source "$CURRENT_DIR/helpers.sh"
 
-# icons charging  ,  ,  ,  ,  , ,    
-# icons         100, 90, 80, 60, 40, 30, 20 %
-
-# icons normal  , ,  ,  ,  ,  ,  ,  ,  
-# icons       100, 90, 80, 70, 60, 50, 40, 20, 10 %
-
-
-
-
-
-# script global variables
-icon_charge_tier8=''
-icon_charge_tier7=''
-icon_charge_tier6=''
-icon_charge_tier5=''
-icon_charge_tier4=''
-icon_charge_tier3=''
-icon_charge_tier2=''
-icon_charge_tier1=''
 
 
 icon_charge_tier10_default='󰁹'
@@ -57,6 +38,8 @@ icon_charge_tier0_charging='󰢟'
 
 # icons are set as script global variables
 get_icon_charge_settings() {
+	icon_charge_tier10=$(get_tmux_option "@batt_icon_charge_tier10" "$icon_charge_tier10_default")
+	icon_charge_tier9=$(get_tmux_option "@batt_icon_charge_tier9" "$icon_charge_tier9_default")
 	icon_charge_tier8=$(get_tmux_option "@batt_icon_charge_tier8" "$icon_charge_tier8_default")
 	icon_charge_tier7=$(get_tmux_option "@batt_icon_charge_tier7" "$icon_charge_tier7_default")
 	icon_charge_tier6=$(get_tmux_option "@batt_icon_charge_tier6" "$icon_charge_tier6_default")
@@ -65,6 +48,8 @@ get_icon_charge_settings() {
 	icon_charge_tier3=$(get_tmux_option "@batt_icon_charge_tier3" "$icon_charge_tier3_default")
 	icon_charge_tier2=$(get_tmux_option "@batt_icon_charge_tier2" "$icon_charge_tier2_default")
 	icon_charge_tier1=$(get_tmux_option "@batt_icon_charge_tier1" "$icon_charge_tier1_default")
+	icon_charge_tier0=$(get_tmux_option "@batt_icon_charge_tier0" "$icon_charge_tier0_default")
+
 }
 
 
@@ -75,7 +60,7 @@ print_icon_charge_plus_status() {
         
         if [ $percentage -ge 100 -o "$percentage" == "" ]; then
 		    # if percentage is empty, assume it's a desktop         # maximum
-		    printf "$icon_charge_tier10_charging"
+		    printf "$icon_charge_tier10_default"
         
         elif [ $percentage -ge 90 ]; then
 		    printf "$icon_charge_tier9_charging"
@@ -112,38 +97,41 @@ print_icon_charge_plus_status() {
 
         if [ $percentage -ge 100 -o "$percentage" == "" ]; then
 		    # if percentage is empty, assume it's a desktop         # maximum
-		    printf "$icon_charge_tier10"
+		    printf "$icon_charge_tier10_default"
         
         elif [ $percentage -ge 90 ]; then
-		    printf "$icon_charge_tier9"
+		    printf "$icon_charge_tier9_default"
 	
         elif [ $percentage -ge 80 ]; then
-		    printf "$icon_charge_tier8"
+		    printf "$icon_charge_tier8_default"
 
 	      elif [ $percentage -ge 70 ]; then
-		    printf "$icon_charge_tier7"
+		    printf "$icon_charge_tier7_default"
 	    
         elif [ $percentage -ge 60 ]; then
-		    printf "$icon_charge_tier6"
+		    printf "$icon_charge_tier6_default"
 	
         elif [ $percentage -ge 50 ]; then
-	    	printf "$icon_charge_tier5"
+	    	printf "$icon_charge_tier5_default"
         
         elif [ $percentage -ge 40 ]; then
-	    	printf "$icon_charge_tier4"
+	    	printf "$icon_charge_tier4_default"
 	
         elif [ $percentage -ge 30 ]; then
-    		printf "$icon_charge_tier3"
+    		printf "$icon_charge_tier3_default"
 
         elif [ $percentage -ge 20 ]; then
-    		printf "$icon_charge_tier2"
+    		printf "$icon_charge_tier2_default"
 	
         elif [ $percentage -gt 10 ]; then 
-    		printf "$icon_charge_tier1"
+    		printf "$icon_charge_tier1_default"
 	
         else
-    		printf "$icon_charge_tier0"                             # minimun
+    		printf "$icon_charge_tier0_default"    
+        fi 
     fi
+
+
 }
 
 
