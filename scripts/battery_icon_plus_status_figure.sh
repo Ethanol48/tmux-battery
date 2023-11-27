@@ -24,8 +24,7 @@ print_figure() {
 
     printf "#[fg=$color]▐#[fg=$font,bg=$color,bold] $percentage% $battery_icon_plus_status #[fg=$TC,bg=$BG_BATTERY]"
 
-    # #[fg=$font,bg=$color,nobold]
-
+    # 
 }
 
 #
