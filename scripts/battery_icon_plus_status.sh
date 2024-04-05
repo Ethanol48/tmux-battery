@@ -4,9 +4,34 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 source "$CURRENT_DIR/helpers.sh"
 
+# Not charging icons
+# 󰁹
+# 󰂂
+# 󰂂
+# 󰂁
+# 󰁿
+# 󰁾
+# 󰁽
+# 󰁼
+# 󰁻
+# 󰁺
+# 󰂎
+
+# charging icons
+# 󰂅
+# 󰂋
+# 󰂊
+# 󰢞
+# 󰂉
+# 󰢝
+# 󰂈
+# 󰂇
+# 󰂆
+# 󰢜
+# 󰢟
 
 
-icon_charge_tier10_default='󰁹'
+icon_charge_tier10_defaul='󰁹'
 icon_charge_tier9_default='󰂂'
 icon_charge_tier8_default='󰂂'
 icon_charge_tier7_default='󰂁'
@@ -31,6 +56,7 @@ icon_charge_tier3_charging='󰂇'
 icon_charge_tier2_charging='󰂆'
 icon_charge_tier1_charging='󰢜'
 icon_charge_tier0_charging='󰢟'
+
 
 
 
